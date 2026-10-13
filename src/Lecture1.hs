@@ -39,6 +39,21 @@ module Lecture1
 its behaviour, possible types for the function arguments and write the
 type signature explicitly.
 -}
+
+{-
+    Notes:
+    type signature -    explicit declaration of the data type - WRITTEN WITH A DOUBLE COLON
+    take -              gets a prespecified number of elements from a list
+                        take :: Int -> [a] -> [a] (no elements + list -> new list)
+    limit - possibly an integer 
+    possible inputs
+        from take: [a]
+        from take: Int
+    possible outputs
+        string (possibly written as [a]) -> [Char]
+
+-}
+makeSnippet :: [a] -> Int -> [Char]
 makeSnippet limit text = take limit ("Description: " ++ text) ++ "..."
 
 {- | Implement a function that takes two numbers and finds sum of
@@ -53,8 +68,20 @@ their squares.
 Explanation: @sumOfSquares 3 4@ should be equal to @9 + 16@ and this
 is 25.
 -}
+
+{-
+    Steps Required:
+        0.5. figure out if floats should be considered
+        1. Specify data type
+        2. Figure out the most efficient way to return numbers
+        3. write the body of the function
+    should probably use a float to make it more simple but im not entirely sure
+            UPDATE: could just use a and let it infer the type post-function
+-}
+
 -- DON'T FORGET TO SPECIFY THE TYPE IN HERE
-sumOfSquares x y = error "TODO!"
+sumOfSquares :: a -> a -> a
+sumOfSquares x y = x*x + y*y
 
 {- | Implement a function that returns the last digit of a given number.
 
@@ -66,8 +93,19 @@ sumOfSquares x y = error "TODO!"
 🕯 HINT: use the @mod@ function
 
 -}
+{-
+    @mod@ function -    Integral a => a -> a -> a
+                        returns the remainder
+    backticks -         Surrounding a function name by backticks makes it an infix operator
+
+    Strategy
+        1. Input an integer
+        2. return mod 10 of the value
+
+-}
 -- DON'T FORGET TO SPECIFY THE TYPE IN HERE
-lastDigit n = error "lastDigit: Not implemented!"
+lastDigit :: a -> a
+lastDigit n =  n `mod` 10
 
 {- | Write a function that takes three numbers and returns the
 difference between the biggest number and the smallest one.
